@@ -2,13 +2,17 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const canvas = document.getElementById('demo');
+const overlay = document.getElementById('overlay');
+const modalContent = document.getElementById('modal-content');
+const closeModalBtn = document.getElementById('close-modal');
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: canvas });
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.set(0, 5.8, 25);
+const initialCameraPosition = new THREE.Vector3(0, 5.8, 25);
+camera.position.copy(initialCameraPosition);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -72,13 +76,69 @@ for (let i = 0; i < outerStarPoints.length; i++) {
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
 let hoveredCapsule = null;
-let wasHovering = false; // Flag to detect state change
+let wasHovering = false;
+let isAnimatingCamera = false;
 
 const onMouseMove = (event) => {
     pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
     pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
 };
 window.addEventListener('mousemove', onMouseMove, false);
+
+const onClick = (event) => {
+    const intersects = raycaster.intersectObjects(formationCapsules, false);
+    if (intersects.length > 0) {
+        const intersectedObject = intersects[0].object;
+        const sectionId = intersectedObject.userData.sectionId;
+
+        // Show the modal
+        const contentToInject = document.getElementById(sectionId).innerHTML;
+        modalContent.innerHTML = contentToInject;
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = 'hidden';
+
+        // Start camera animation
+        isAnimatingCamera = true;
+        const targetPosition = new THREE.Vector3().copy(intersectedObject.position).add(new THREE.Vector3(5, 5, 5));
+        
+        const camAnimation = (t) => {
+             if (!isAnimatingCamera) return;
+             camera.position.lerp(targetPosition, 0.05);
+             camera.lookAt(intersectedObject.position);
+             if (camera.position.distanceTo(targetPosition) < 0.1) {
+                isAnimatingCamera = false;
+                // Disable OrbitControls to lock camera position
+                controls.enabled = false;
+             } else {
+                requestAnimationFrame(camAnimation);
+             }
+        };
+        requestAnimationFrame(camAnimation);
+    }
+};
+window.addEventListener('click', onClick, false);
+
+// Close modal event listener
+closeModalBtn.addEventListener('click', () => {
+    overlay.classList.add('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = 'auto';
+    
+    // Animate camera back to original position
+    isAnimatingCamera = true;
+    const camAnimationBack = (t) => {
+        if (!isAnimatingCamera) return;
+        camera.position.lerp(initialCameraPosition, 0.05);
+        camera.lookAt(0, 0, 0);
+        if (camera.position.distanceTo(initialCameraPosition) < 0.1) {
+           isAnimatingCamera = false;
+           // Enable OrbitControls again
+           controls.enabled = true;
+        } else {
+            requestAnimationFrame(camAnimationBack);
+        }
+    };
+    requestAnimationFrame(camAnimationBack);
+});
 
 // Helper function to find the closest point on a curve
 function findClosestPointOnCurve(curve, point, divisions = 100) {
@@ -105,54 +165,36 @@ let animationTime = 0;
 let lastFrameTime = performance.now();
 
 function animate() {
-    // Calculate the time elapsed since the last frame
     const currentTime = performance.now();
     const deltaTime = currentTime - lastFrameTime;
     lastFrameTime = currentTime;
-    controls.update();
+    
+    if (!isAnimatingCamera) {
+        controls.update();
 
-    // Perform the raycast inside the animation loop
-    raycaster.setFromCamera(pointer, camera);
-    const intersects = raycaster.intersectObjects(formationCapsules, false);
-
-    if (intersects.length > 0) {
-        wasHovering = true;
-        const intersectedObject = intersects[0].object;
-
-        if (hoveredCapsule !== intersectedObject) {
-            if (hoveredCapsule) {
-                document.getElementById(hoveredCapsule.userData.sectionId).classList.add('d-none');
-            }
-            hoveredCapsule = intersectedObject;
-            document.getElementById(hoveredCapsule.userData.sectionId).classList.remove('d-none');
-        }
-
-        const targetPosition = intersects[0].point;
-        unformedCapsule.position.lerp(targetPosition, 0.1);
-    } else {
-        if (wasHovering) {
-            // This is the first frame after a hover event ends.
-            // Find the closest point on the path to the current capsule position
-            // and reset the animation time based on that.
-            const { t } = findClosestPointOnCurve(starPath, unformedCapsule.position);
-            animationTime = t * 2000;
-        }
-        wasHovering = false;
+        raycaster.setFromCamera(pointer, camera);
+        const intersects = raycaster.intersectObjects(formationCapsules, false);
         
-        if (hoveredCapsule) {
-            document.getElementById(hoveredCapsule.userData.sectionId).classList.add('d-none');
-            hoveredCapsule = null;
-        }
+        if (intersects.length > 0) {
+            wasHovering = true;
+            unformedCapsule.position.lerp(intersects[0].point, 0.1);
+        } else {
+            if (wasHovering) {
+                const { t } = findClosestPointOnCurve(starPath, unformedCapsule.position);
+                animationTime = t * 2000;
+            }
+            wasHovering = false;
+            
+            animationTime += deltaTime;
+            const t = (animationTime / 2000) % 1;
 
-        animationTime += deltaTime;
-        const t = (animationTime / 2000) % 1;
-
-        const position = starPath.getPointAt(t);
-        if (position) {
-            unformedCapsule.position.copy(position);
-            const tangent = starPath.getTangentAt(t);
-            if (tangent) {
-                unformedCapsule.lookAt(position.clone().add(tangent));
+            const position = starPath.getPointAt(t);
+            if (position) {
+                unformedCapsule.position.copy(position);
+                const tangent = starPath.getTangentAt(t);
+                if (tangent) {
+                    unformedCapsule.lookAt(position.clone().add(tangent));
+                }
             }
         }
     }

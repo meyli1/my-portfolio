@@ -1,100 +1,489 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>Portfolio</title>
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-        
-    </head>
-    <body>
-        <canvas id="demo"></canvas>
 
-        <div class="d-flex justify-content-center align-items-center vh-100 ">
-        <div id="section-0" class="d-none  rounded shadow bg-body-tertiary ">
-            <div id="about-me" class="general ">
-                <div class="container ">
-                    <div class="row ">
-                        <div class="col-md-6 mx-50 my-50">
-                            <h1 class="text-center"> <strong>Hi!</strong> </h1><br>
-                            <p>My name is Meyli Colmenero (메일리),  and I am a Senior studying Computer Engineering. I enjoy making and learning whether it's Web Design, Robotics,or General 3D Modeling. I want to know it all!
-                            <br><br>I am currently interested in roles that merge hardware and software; however, My experience, schooling, and optimism can guide me to other roles when the work sounds really interesting as well. 
-                            Let me know if you have any questions regarding bugs on this site, general life/career questions, or more as you can tell from my site i would love to learn from you as well. 
-                            </p>
-                        </div>
-                        <div class="col-md-6 d-flex align-items-center justify-content-center mx-50 my-50">
-                            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-                                <div class="carousel-inner">
-                                  <div class="carousel-item active">
-                                    <img src="../images/skydive.png" class="d-block w-100" alt="...">
-                                  </div>
-                                  <div class="carousel-item">
-                                    <img src="../images/Robotics.jpg" class="d-block w-100" alt="...">
-                                  </div>
-                                  <div class="carousel-item">
-                                    <img src="../images/exploration.jpg" class="d-block w-100" alt="...">
-                                  </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                  <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                  <span class="sr-only">Next</span>
-                                </a>
-                              </div>
-                        </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for canvas and overlay */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        #overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+
+    <!-- Three.js library -->
+    <script type="importmap">
+            {
+                "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js",
+                    "three/examples/jsm/controls/OrbitControls": "https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/controls/OrbitControls.js"
+                }
+            }
+        </script>
+</head>
+
+<body class="bg-gray-900 text-white font-sans overflow-hidden">
+    <canvas id="demo"></canvas>
+
+    <!-- Full-screen modal overlay -->
+    <div id="overlay"
+        class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-500 z-50">
+        <div id="modal-container"
+            class="bg-gray-800 p-8 rounded-2xl shadow-lg w-11/12 md:w-5/6 lg:w-3/4 h-[95vh] overflow-y-auto transform transition-transform duration-500 scale-95">
+            <div class="flex justify-end">
+                <button id="close-modal" class="text-xl font-bold text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <!-- Content will be injected here -->
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Hidden content templates for each capsule -->
+    <div id="section-0" class="hidden">
+        <div class="text-center p-4">
+            <h1 class="text-5xl font-extrabold mb-4">About Me</h1>
+            <p class="text-3xl">My name is Meyli Colmenero (메일리), and I am a Senior studying Computer Engineering. I
+                enjoy making and learning whether it's Web Design, Robotics, or General 3D Modeling. I want to know it
+                all!
+                <br><br>I am currently interested in roles that merge hardware and software; however, my experience,
+                schooling, and optimism can guide me to other roles when the work sounds really interesting as well.
+                Let me know if you have any questions regarding bugs on this site, general life/career questions, or
+                more as you can tell from my site i would love to learn from you as well.
+            </p>
+            <div class="mt-8 flex justify-center items-center space-x-4">
+                <img src="/images/skydive.png" class="w-1/3 rounded-xl shadow-lg" alt="Skydive">
+                <img src="/images/Robotics.jpg" class="w-1/3 rounded-xl shadow-lg" alt="Robotics">
+                <img src="/images/exploration.jpg" class="w-1/3 rounded-xl shadow-lg" alt="Exploration">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="section-1" class="hidden">
+        <div class="space-y-8 p-4">
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-4 text-center experience-title">Experiences</h1>
+            <!-- Sixth Experience Card (no images) -->
+            <div
+                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col items-start p-6 border-2 border-gray-500">
+                <div class="h-auto w-1/6 mb-2"><img src="/icons/TOYO.svg" class=" object-cover w-full h-auto"
+                        alt="toyota icon"></div>
+                <h2 class="text-3xl font-bold mb-1">Toyota</h2>
+                <p class="text-lg text-gray-400">OneTech Co-op</p>
+                <p class="text-lg text-gray-400">May 2025 - August 2025</p>
+                <p class="text-lg text-gray-400 mb-4">Plano,TX - Internship</p>
+                <p class="text-lg text-gray-200 mb-4">
+                    Engineered an end-to-end AI agentic workflow to analyze and visualize technology debt across
+                    multiple teams. Designed and implemented a robust data pipeline to ingest over 18,000 entries,
+                    utilizing a tech stack of CrewAI, a PostgreSQL database, and Apache Superset. This system produced
+                    dynamic dashboards for executives to monitor tech debt and generated specific, actionable
+                    recommendations for developers, directly improving framework and programming language health.
+                    Additionally, I architected the cloud deployment strategy for the workflow to ensure scalability and
+                    automated triggering.
+                </p>
+                <div class="flex space-x-2">
+                    <span
+                        class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Python</span>
+                    <span
+                        class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">CrewAI</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Apache
+                        Superset</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">AWS</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Prompt
+                        Engineering</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Git</span>
+                </div>
+            </div>
+
+            <!-- Fifth Experience Card with image on the right and smaller -->
+            <div
+                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col items-start p-6 border-2 border-gray-500">
+                <div class="h-10 w-10 mb-2"><img src="/icons/bell_icon.png" class=" object-cover w-full h-auto"
+                        alt="bell icon"></div>
+                <h2 class="text-3xl font-bold mb-1">Bell Flight</h2>
+                <p class="text-lg text-gray-400">Flight Controls Software Intern</p>
+                <p class="text-lg text-gray-400">June 2024 - August 2024</p>
+                <p class="text-lg text-gray-400 mb-4">Fortworth,TX - Internship</p>
+                <p class="text-lg text-gray-200 mb-4">
+                    Automated a critical, manual data synchronization process between an MSSQL program schedule and
+                    Azure DevOps, reducing human error and improving workflow efficiency. Developed and deployed a
+                    custom Python script using PostgreSQL to automatically ingest and export program schedule data,
+                    creating and updating epics, activities, and stories for development teams. This solution
+                    streamlined project management and provided developers with real-time task updates.
+                </p>
+                <div class="flex space-x-2">
+                    <span
+                        class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Python</span>
+                    <span
+                        class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">MSSQL</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Azure
+                        Devops API</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Azure
+                        Devops</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">REST
+                        APIs</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Git</span>
+                </div>
+            </div>
+
+
+            <!-- Fourth Experience Card with image on the right -->
+            <div
+                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
+                <!-- Image container on the right, centered -->
+                <div class="w-full md:w-1/3 p-4 flex-shrink-0 flex justify-center items-center">
+                    <img src="/images/NSF REU.jpg" class="rounded-xl object-cover w-1/2 h-auto -rotate-90"
+                        alt="Experience 2">
+                </div>
+                <!-- Text container on the left -->
+                <div class="w-full md:w-2/3 text-left md:pr-4">
+                    <div class="h-auto w-11 mb-2"><img src="/icons/utd.jpeg" class=" object-cover w-full h-auto"
+                            alt="utd icon"></div>
+                    <h2 class="text-3xl font-bold mb-1">NSF REU @ UTD</h2>
+                    <p class="text-lg text-gray-400">Undergraduate Researcher at UTD</p>
+                    <p class="text-lg text-gray-400">January 2024 - August 2024</p>
+                    <p class="text-lg text-gray-400 mb-4">Richardson,TX - Research</p>
+                    <p class="text-lg text-gray-200 mb-4">
+                        Pioneered the development of an autonomous research platform by converting a child's ride-on toy
+                        car. Conducted comprehensive power and torque calculations to select and integrate critical
+                        components, including boost/buck converters and servo motors. Designed and fabricated a compact
+                        electronics tower, rewired the system for seamless power integration, and architected the ROS
+                        node communication framework to enable future autonomous navigation based on sensor data.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Boost/Buck
+                            Converters</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Soldering</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Power
+                            Electronics</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Servo
+                            Motors</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">3D
+                            Printing</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Reverse
+                            Engineering</span>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
 
-        <div id="section-1" class="d-none rounded shadow bg-body-tertiary ">
-            <div id="experiences" class="general">
-                <h1> <strong>EXPERIENCES</strong> </h1>
-                 
+            <!-- Third Experience Card with image on the right -->
+            <div
+                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
+                <!-- Image container on the right, centered -->
+                <div class="w-full md:w-1/3 p-4 flex-shrink-0 flex justify-center items-center">
+                    <img src="/images/bellflight.JPG" class="rounded-xl object-cover w-full h-auto" alt="Experience 2">
+                </div>
+                <!-- Text container on the left -->
+                <div class="w-full md:w-2/3 text-left md:pr-4">
+                    <div class="h-auto w-10 mb-2"><img src="/icons/bell_icon.png" class=" object-cover w-full h-auto"
+                            alt="bell icon"></div>
+                    <h2 class="text-3xl font-bold mb-1">Bell Flight</h2>
+                    <p class="text-lg text-gray-400">Flight Controls Software Intern</p>
+                    <p class="text-lg text-gray-400">May 2023 - August 2023</p>
+                    <p class="text-lg text-gray-400 mb-4">Fortworth,TX - Internship</p>
+                    <p class="text-lg text-gray-200 mb-4">
+                        Developed a custom model checking solution for Simulink to ensure code integrity and
+                        standardization before conversion to C code. This was accomplished by creating a Python script
+                        with a Tkinter GUI to automate model verification, incorporating watchdog, MATLAB Engine,
+                        BeautifulSoup, and subprocess APIs. This proof-of-concept project enabled real-time quality
+                        checks and standardized model creation.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Python</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Tkinter</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Simulink</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Matlab</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Second Experience Card with image on the right and smaller -->
+            <div
+                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col items-start p-6 border-2 border-gray-500">
+                <div class="h-auto w-10 mb-2"><img src="/icons/hermtac_icon.jpeg" class=" object-cover w-full h-auto"
+                        alt="hermtac icon"></div>
+                <h2 class="text-3xl font-bold mb-1">Hermtac</h2>
+                <p class="text-lg text-gray-400">Hardware Engineering Intern</p>
+                <p class="text-lg text-gray-400">May 2022 - June 2022</p>
+                <p class="text-lg text-gray-400 mb-4">Richardson,TX - Internship</p>
+                <p class="text-lg text-gray-200 mb-4">
+                    Efficiently completed the assembly and testing of 37 portable modems, finishing ahead of schedule.
+                    Executed detailed soldering of external LED indicator lights and performed final assembly of GPS
+                    antennas and internal components. The most complex part was creating a comprehensive wiring diagram
+                    for product documentation, which integrated a 4-ignition latching switch and battery bank.
+                </p>
+                <div class="flex space-x-2">
+                    <span
+                        class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Soldering</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Wire
+                        Management</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Machine
+                        Shop Safety</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Circuit
+                        Design</span>
+                    <span
+                        class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Start-up</span>
+                </div>
+            </div>
+
+            <!-- First Experience Card (no images) -->
+            <div
+                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col items-start p-6 border-2 border-gray-500">
+                <div class="h-auto w-10 mb-2"><img src="/icons/thomson_reuters_icon.jpeg"
+                        class=" object-cover w-full h-auto" alt="TR icon"></div>
+                <h2 class="text-3xl font-bold mb-1">Thomson Reuters</h2>
+                <p class="text-lg text-gray-400">Digital Marketing Strategist Intern</p>
+                <p class="text-lg text-gray-400">June 2021 - August 2021</p>
+                <p class="text-lg text-gray-400 mb-4">Remote - Internship</p>
+                <p class="text-lg text-gray-200 mb-4">
+                    Modified data, tasks, and due dates for over 100 clients using Wrike. Gained expertise in 20+ SEO
+                    best practices, applying them to client websites, including Back-links, Google Ads, and utilizing
+                    tools like MOZ, Screaming Frog, and WordPress to improve customer interactions. Presented a new
+                    product idea in just three weeks, including a full presentation and product layout, to a group of
+                    20+ people from the product and marketing teams.
+                </p>
+                <div class="flex space-x-2">
+                    <span
+                        class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Wrike</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">SEO</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Google
+                        Analytics</span>
+                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Digital
+                        Marketing</span>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div id="section-2" class="d-none text-center">
-            <div id="projects" class="general">
-                <h1><strong>PROJECTS</strong></h1> 
-                 
-            
+    <div id="section-2" class="hidden">
+        <div class="space-y-8 p-4 text-center p-4">
+            <h1 class="text-5xl font-extrabold mb-4">Projects</h1>
+
+            <!-- First Experience Card with image on the right -->
+            <div
+                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
+                <!-- Image container on the right, centered -->
+                <div class="w-full md:w-1/3 p-4 flex-shrink-0 flex justify-center items-center">
+                    <img src="/images/" class="rounded-xl object-cover w-full h-auto" alt="Experience 1">
+                </div>
+                <!-- Text container on the left -->
+                <div class="w-full md:w-2/3 text-left md:pr-4">
+                    <h2 class="text-3xl font-bold mb-1">Control System for ML Sweat Model</h2>
+                    <p class="text-lg text-gray-400">SWE Match 2025</p>
+                    <p class="text-lg text-gray-400">Electrical Engineering Lead</p>
+                    <p class="text-lg text-gray-400 mb-4">January 2025 - August 2025</p>
+                    <p class="text-lg text-gray-200 mb-4">
+                        - Engineered an end-to-end control system using Python and a Flask server that hosts a user interface to easily send commands and records pump responses to manage and collect data from a programmable pump that's duty is to mimic the secretion of sweat via RS232 protocol, deployed on a Raspberry Pi.
+                        <br>
+                        - Designed and configured the Linux OS environment to ensure seamless integration and automated data capture.
+                        <br>
+                        - Directly worked with sponsor Solventum to gather requirements and set up the mechanism on their testing lab's network.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Python</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">RS232
+                            Protocol</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Flask
+                            Server</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Git</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">HTML</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">JavaScript</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Raspberry
+                            Pi</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Linux</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Pump
+                            Programming Language</span>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div id="section-3" class="d-none text-center">
-            <div id="achievements" class="general">
-                <h1><strong>ACHIEVEMENTS</strong></h1> 
-    
+            <!-- Second Experience Card with image on the right -->
+            <div
+                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
+                <!-- Image container on the right, centered -->
+                <div class="w-full md:w-1/3 p-4 flex-shrink-0 flex justify-center items-center">
+                    <img src="/images/" class="rounded-xl object-cover w-full h-auto" alt="Experience 2">
+                </div>
+                <!-- Text container on the left -->
+                <div class="w-full md:w-2/3 text-left md:pr-4">
+                    <h2 class="text-3xl font-bold mb-1">Senior Design Project</h2>
+                    <p class="text-lg text-gray-400">UTDesign</p>
+                    <p class="text-lg text-gray-400">Electrical/Software Member</p>
+                    <p class="text-lg text-gray-400 mb-4">January 2025 - August 2025</p>
+                    <p class="text-lg text-gray-200 mb-4">
+                        - Designed and managed the power system for all electronics, including the Raspberry Pi, pneumatic pistons, magnetic reed sensors, and logic converters.
+                        <br>
+                        - Developed a status node for the user interface (ROS2, React) to provide real-time updates on sensor states and piston actuation.
+                        <br>
+                        - Automated the deletion of logs from the SD card using a Python watchdog timer to ensure file management.
+                        <br>
+                        - CAD-ed and prototyped custom brackets to enhance the stability of the pistons.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">React</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">3D
+                            Printing</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Onshape</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">
+                            ROS2</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Pneumatic
+                            Pistons</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Power
+                            Electronics</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Raspberry
+                            Pi</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Python</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Linux</span>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div id="section-4" class="d-none text-center">
-            <div id="contact" class="general">
-                <h1> <strong>CONTACT</strong></h1> 
-                 
 
+            <!-- Third Experience Card with image on the right -->
+            <div
+                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
+                <!-- Image container on the right, centered -->
+                <div class="w-full md:w-1/3 p-4 flex-shrink-0 flex justify-center items-center">
+                    <img src="/images/collage.png" class="rounded-xl object-cover w-full h-auto" alt="Experience 3">
+                </div>
+                <!-- Text container on the left -->
+                <div class="w-full md:w-2/3 text-left md:pr-4">
+                    <h2 class="text-3xl font-bold mb-1">Mechanical keypad from scratch</h2>
+                    <p class="text-lg text-gray-400">Biotech Club</p>
+                    <p class="text-lg text-gray-400">CS/ENGR Commitee Project Lead</p>
+                    <p class="text-lg text-gray-400 mb-4">February 2025 - May 2025</p>
+                    <p class="text-lg text-gray-200 mb-4">
+                        - Designed and led a series of workshops for a multidisciplinary project, guiding students through the entire mechanical keypad development lifecycle from concept to creation.
+                        <br>
+                        - Taught fundamental CAD principles and design planning in Onshape, enabling students to prototype components and optimize layouts for 3D printing using an Ender 3 and Cura.
+                        <br>
+                        - Instructed students on electronics assembly, including diode and Pro Micro layout for soldering, and demonstrated advanced techniques like using flux for efficient connections.
+                        <br>
+                        - Provided a comprehensive walkthrough of firmware flashing with QMK Configurator and explained the structure of the generated C code.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">C</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">3D
+                            Printing</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Onshape</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Electronics</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Guiding
+                            Workshops</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Cura</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Problem
+                            Solving</span>
+                    </div>
+                </div>
             </div>
+
+
+            <!-- Fourth Experience Card with image on the right -->
+            <div
+                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
+                <!-- Image container on the right, centered -->
+                <div class="w-full md:w-1/3 p-4 flex-shrink-0 flex justify-center items-center">
+                    <img src="/images/" class="rounded-xl object-cover w-full h-auto" alt="Experience 4">
+                </div>
+                <!-- Text container on the left -->
+                <div class="w-full md:w-2/3 text-left md:pr-4">
+                    <h2 class="text-3xl font-bold mb-1">Oversaw Various Projects</h2>
+                    <p class="text-lg text-gray-400">Nova</p>
+                    <p class="text-lg text-gray-400">Hardware/Firmware/ELectrcial Lead</p>
+                    <p class="text-lg text-gray-400 mb-4">Sept 2023 - August 2024</p>
+                    <p class="text-lg text-gray-200 mb-4">
+                        - Led hardware and firmware development for multiple projects, including programming four 16x16 LED panels using an Adafruit MegaBoard and Python for the 2023 Christmas Parade.
+                        <br>
+                        - Fabricated and assembled a new roof rack using extrusion, which enabled flexible mounting for GNSS, cameras, and LIDAR, and taught team members how to operate a chopsaw safely and accurately.
+                        <br>
+                        - Replaced the throttle-by-wire system with a more robust, 3D-printed joint system to improve reliability and performance.
+                        <br>
+                        - Established permanent connections across the car by replacing all wing nut connections with soldered joints for improved durability.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Python</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">3D
+                            Printing</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Onshape</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Electronics</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Laser
+                            Cutter</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Chop
+                            Saw</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Soldering</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Wire
+                            Management</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Prototyping</span>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+    </div>
 
-        <footer>© 2024 Meyli Colmenero | Built with ❤️ using HTML, CSS, and JavaScript</footer>
 
-        <script type="module" src="main.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
+    <div id="section-3" class="hidden">
+        <div class="text-center p-4">
+            <h1 class="text-5xl font-extrabold mb-4">Achievements</h1>
+            <p class="text-lg">Your academic and professional achievements...</p>
+            <img src="https://placehold.co/600x400/ADD8E6/000000?text=Achievements+Image"
+                class="mt-4 rounded-xl shadow-lg" alt="Achievements">
+        </div>
+    </div>
+
+    <div id="section-4" class="hidden">
+        <div class="text-center p-4">
+            <h1 class="text-5xl font-extrabold mb-4">Contact</h1>
+            <p class="text-lg">Your contact information...</p>
+            <img src="https://placehold.co/600x400/FFA07A/000000?text=Contact+Image" class="mt-4 rounded-xl shadow-lg"
+                alt="Contact">
+        </div>
+    </div>
+
+    <footer class="fixed bottom-0 left-0 w-full text-center py-4 bg-transparent text-gray-400 z-10">
+        © 2024 Meyli Colmenero | Built with ❤️ using HTML, CSS, and JavaScript
+    </footer>
+
+    <!-- Link to your JavaScript file -->
+    <script src="./main.js" type="module"></script>
+</body>
+
 </html>
-
-<!--<h2>Contact Me</h2>
-    <p>Email: colmeneromeyli@gmail.com</p> -->
