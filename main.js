@@ -167,8 +167,8 @@ import * as THREE from 'three';
 
         const achievements = {
             'HACKUTD': {
-                desc: 'Won two consecutive hackathons by developing innovative software solutions.',
-                img: 'https://placehold.co/150x100/ADD8E6/000000?text=Hackathon+Win'
+                desc: 'Eco Fast Track is a tool that uses an IoT kit filled with multiple sensors used to monitor water temperature and flow, providing real-time insights into usage. It aggregates data over time, compares it to global benchmarks, and uses AI to offer personalized water-saving recommendations. Property managers can proactively address inefficiencies, while tenants receive automated email alerts if their usage exceeds the average. \n\n With an optional community-sharing feature and engaging, user-friendly visuals, the platform promotes accountability, sustainability, and collaboration. This project won first and third place in the most competitive HackUTD season with it being the largest hackathon in Texas.',
+                img: '/images/hackutd.png'
             },
             'Scholarship': {
                 desc: 'Received the Sam and Ellen Chang Scholarship and a scholarship to the Virtual Grace Hopper Celebration.',
