@@ -74,15 +74,18 @@ import * as THREE from 'three';
 
         // --- Work-in-progress pop-up logic ---
         const popup = document.getElementById('wip-popup');
+        const closePopupButton = document.getElementById('close-popup');
+
         window.onload = () => {
             popup.style.opacity = '1';
             popup.style.pointerEvents = 'auto';
-            setTimeout(() => {
-                popup.style.opacity = '0';
-                popup.style.pointerEvents = 'none';
-            }, 9000); // Popup disappears after 6 seconds
-            init(); // Start the animation after the pop-up has been displayed
+            init(); // Start the animation
         };
+
+        closePopupButton.addEventListener('click', () => {
+            popup.style.opacity = '0';
+            popup.style.pointerEvents = 'none';
+        });
 
         // Raycaster and mouse for interaction
         const raycaster = new THREE.Raycaster();
