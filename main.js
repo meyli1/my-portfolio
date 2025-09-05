@@ -72,6 +72,18 @@ import * as THREE from 'three';
             formationCapsules.push(capsule);
         }
 
+        // --- Work-in-progress pop-up logic ---
+        const popup = document.getElementById('wip-popup');
+        window.onload = () => {
+            popup.style.opacity = '1';
+            popup.style.pointerEvents = 'auto';
+            setTimeout(() => {
+                popup.style.opacity = '0';
+                popup.style.pointerEvents = 'none';
+            }, 9000); // Popup disappears after 6 seconds
+            init(); // Start the animation after the pop-up has been displayed
+        };
+
         // Raycaster and mouse for interaction
         const raycaster = new THREE.Raycaster();
         const pointer = new THREE.Vector2();

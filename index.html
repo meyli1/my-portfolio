@@ -38,7 +38,16 @@
 
 <body class="bg-gray-900 text-white font-sans overflow-hidden">
     <canvas id="demo"></canvas>
-
+    <!-- Work-in-progress pop-up -->
+    <div id="wip-popup"
+        style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(30, 41, 59, 0.95); color: white; padding: 1.5rem 2rem; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2); z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+        <p class="text-center">
+            <span class="font-bold text-xl block mb-2">Graphics are a work in progress!</span>
+            <small>Popup will go away after 15 seconds</small><br><br>
+            Welcome to the <bold>beta release</bold> of my Three.js project! <br><br>Hover your mouse over the
+            interactive elements below to see it in action. To see content, simply click on the static elements
+        </p>
+    </div>
     <!-- Full-screen modal overlay -->
     <div id="overlay"
         class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-500 z-50">
@@ -244,30 +253,33 @@
                 </div>
             </div>
 
-            <!-- First Experience Card (no images) -->
+
             <div
-                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col items-start p-6 border-2 border-gray-500">
-                <div class="h-auto w-10 mb-2"><img src="/icons/thomson_reuters_icon.jpeg"
+                class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
+                <!-- Text container on the left -->
+                <div class="w-full md:w-full text-left md:pr-4">
+                    <div class="h-auto w-10 mb-2"><img src="/icons/thomson_reuters_icon.jpeg"
                         class=" object-cover w-full h-auto" alt="TR icon"></div>
-                <h2 class="text-3xl font-bold mb-1">Thomson Reuters</h2>
-                <p class="text-lg text-gray-400">Digital Marketing Strategist Intern</p>
-                <p class="text-lg text-gray-400">June 2021 - August 2021</p>
-                <p class="text-lg text-gray-400 mb-4">Remote - Internship</p>
-                <p class="text-lg text-gray-200 mb-4">
-                    Modified data, tasks, and due dates for over 100 clients using Wrike. Gained expertise in 20+ SEO
+                    <h2 class="text-3xl font-bold mb-1">Thomson Reuters</h2>
+                    <p class="text-lg text-gray-400">Digital Marketing Strategist Intern</p>
+                    <p class="text-lg text-gray-400">June 2021 - August 2021</p>
+                    <p class="text-lg text-gray-400 mb-4">Remote - Internship</p>
+                    <p class="text-lg text-gray-200 mb-4">
+                        Modified data, tasks, and due dates for over 100 clients using Wrike. Gained expertise in 20+ SEO
                     best practices, applying them to client websites, including Back-links, Google Ads, and utilizing
                     tools like MOZ, Screaming Frog, and WordPress to improve customer interactions. Presented a new
                     product idea in just three weeks, including a full presentation and product layout, to a group of
                     20+ people from the product and marketing teams.
-                </p>
-                <div class="flex space-x-2">
-                    <span
+                    </p>
+                    <div class="flex  flex-wrap space-x-2">
+                        <span
                         class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Wrike</span>
                     <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">SEO</span>
                     <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Google
                         Analytics</span>
                     <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Digital
                         Marketing</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -519,7 +531,8 @@
     <div id="section-3" class="hidden">
         <div class="p-6 text-center">
             <h1 class="text-5xl font-extrabold mb-4 text-center">Involvement</h1>
-            <small>Hover over the middle of the words to get a small snapshot of my involvement throughout the years</small>
+            <small>Hover over the middle of the words to get a small snapshot of my involvement throughout the
+                years</small>
             <div class="flex flex-col items-center">
                 <div class="relative w-full h-[400px] max-w-[800px] ">
                     <span data-word="HACKUTD"
@@ -558,7 +571,7 @@
                     <div class="max-w-sm text-center justify-center p-2">
                         <img id="tooltip-img" class="rounded-lg mb-2" src="" alt="">
                     </div>
-                    <p id="tooltip-desc" class="text-md text-gray-300"></p>
+                    <p id="tooltip-desc" class="text-lg text-gray-300"></p>
                 </div>
             </div>
         </div>
