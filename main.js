@@ -213,7 +213,7 @@ import * as THREE from 'three';
                 desc: ' as a Griptape Alumni, I completed a complex personal project by constructing a fully functional split mechanical keyboard. My responsibilities encompassed all aspects of the build: I designed the case using CAD, 3D printed the components, soldered all electronics, and programmed the firmware for the pro micro. I successfully produced three working units from my initial design.',
                 img: '/images/keeb.png'
             },
-            'Bell Engineering BootCamper': {
+            'Bell': {
                 desc: 'As a participant in the Bell Engineering Bootcamp, I collaborated on a team to develop a critical safety feature for a drone. We created a system that used the MQTT protocol to notify the pilot when the drones pitch and roll exceeded a set threshold. This communication between the drones Vehicle Management and peripheral control computers triggered the drones LED halo to change colors, providing the pilot with a real-time visual warning about its orientation.',
                 img: '/images/bellbootcamp.png'
             }
