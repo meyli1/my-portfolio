@@ -167,40 +167,40 @@ import * as THREE from 'three';
 
         const achievements = {
             'HACKUTD': {
-                desc: 'Eco Fast Track is a tool that uses an IoT kit filled with multiple sensors used to monitor water temperature and flow, providing real-time insights into usage. It aggregates data over time, compares it to global benchmarks, and uses AI to offer personalized water-saving recommendations. Property managers can proactively address inefficiencies, while tenants receive automated email alerts if their usage exceeds the average. \n\n With an optional community-sharing feature and engaging, user-friendly visuals, the platform promotes accountability, sustainability, and collaboration. This project won first and third place in the most competitive HackUTD season with it being the largest hackathon in Texas.',
+                desc: 'Eco Fast Track is an innovative IoT tool designed to promote water conservation. It utilizes sensors to monitor water usage and employs AI to analyze data, offering personalized, real-time insights and recommendations for both property managers and tenants. By aggregating usage data and comparing it to global benchmarks, the platform encourages sustainability and accountability through a user-friendly interface.',
                 img: '/images/hackutd.png'
             },
-            'Scholarship': {
-                desc: 'Received the Sam and Ellen Chang Scholarship and a scholarship to the Virtual Grace Hopper Celebration.',
-                img: 'https://placehold.co/150x100/D8B4FE/000000?text=Scholarship'
+            'SAE Scholarship': {
+                desc: 'Recipient of the Sam and Ellen Chang Scholarship (2024), a merit-based award recognizing academic achievement.'
+            },
+            'vGHC': {
+                desc: 'Grace Hopper Celebration Scholarship (Virtual), 2024 Awarded a scholarship to attend the worlds largest gathering of women technologists.'
             },
             'NSF REU': {
-                desc: 'Recipient of the National Science Foundation Research Experience for Undergraduates.',
-                img: 'https://placehold.co/150x100/FCA5A5/000000?text=NSF+REU'
+                desc: 'Awarded a highly competitive National Science Foundation Research Experience for Undergraduates (REU) position for 2024, providing a paid research opportunity in my field of study.'
             },
             'MLT Fellow': {
-                desc: 'Selected as a fellow for the Management Leadership for Tomorrow program.',
-                img: 'https://placehold.co/150x100/A7F3D0/000000?text=MLT+Fellow'
+                desc: 'Selected as a Management Leadership for Tomorrow (MLT) Fellow, participating in two major conferences, including the MLT Tech Trek in San Francisco. This experience provided valuable opportunities to network with other fellows and attend workshops focused on career development and leadership.',
+                img: '/images/MLT.png'
             },
             'AWS Cert': {
-                desc: 'Currently working towards my AWS Certified Cloud Practitioner certification.',
-                img: 'https://placehold.co/150x100/93C5FD/000000?text=AWS+Cert'
+                desc: 'Actively pursuing the AWS Certified Cloud Practitioner certification to demonstrate a foundational understanding of cloud computing and AWS services..'
             },
-            'Leadership': {
-                desc: 'Led several group projects and served in leadership roles in student organizations.',
-                img: 'https://placehold.co/150x100/FDBA74/000000?text=Leadership'
+            'Makeathon': {
+                desc: 'Developed a portable water filtration system on a team of five during a 2-day makeathon with a $100 budget. Engineered and built a custom impeller pump to serve as the core of the system.',
+                img: '/images/makeathon.jpg'
             },
             'Volunteering': {
-                desc: 'Dedicated time to volunteering for causes related to technology education and community outreach.',
-                img: 'https://placehold.co/150x100/A5F3FC/000000?text=Volunteer'
+                desc: 'Actively involved in FIRST Robotics for over four years, participating in both FTC and FRC as a student. I continue to contribute to the FIRST community by mentoring my high schools robotics team and volunteering at various FRC, FTC, and FLL competitions. This has allowed me to help foster a passion for STEM in the next generation while developing my leadership and teamwork skills.',
+                img: '/images/robomentor.png'
             },
             'Projects': {
-                desc: 'Developed multiple personal projects to explore new technologies and build a portfolio.',
-                img: 'https://placehold.co/150x100/E9D5FF/000000?text=Projects'
+                desc: ' as a Griptape Alumni, I completed a complex personal project by constructing a fully functional split mechanical keyboard. My responsibilities encompassed all aspects of the build: I designed the case using CAD, 3D printed the components, soldered all electronics, and programmed the firmware for the pro micro. I successfully produced three working units from my initial design.',
+                img: '/images/keeb.png'
             },
-            'Mentorship': {
-                desc: 'Mentored junior students and peers in programming and career development.',
-                img: 'https://placehold.co/150x100/C7D2FE/000000?text=Mentorship'
+            'Bootcamp': {
+                desc: 'As a participant in the Bell Engineering Bootcamp, I collaborated on a team to develop a critical safety feature for a drone. We created a system that used the MQTT protocol to notify the pilot when the drones pitch and roll exceeded a set threshold. This communication between the drones Vehicle Management and peripheral control computers triggered the drones LED halo to change colors, providing the pilot with a real-time visual warning about its orientation.',
+                img: '/images/bellbootcamp.png'
             }
         };
 
