@@ -39,15 +39,30 @@
 <body class="bg-gray-900 text-white font-sans overflow-hidden">
     <canvas id="demo"></canvas>
     <!-- Work-in-progress pop-up -->
-    <div id="wip-popup"
-        style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(30, 41, 59, 0.95); color: white; padding: 1.5rem 2rem; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2); z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+    <div id="wip-popup" class="w-11/12 max-w-lg p-6 md:p-8 rounded-xl shadow-2xl overflow-y-auto max-h-[90vh]" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(30, 41, 59, 0.95); color: white; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.5s ease-in-out;">
         <p class="text-center">
             <span class="font-bold text-xl block mb-2">Graphics are a work in progress!</span>
-            <small>Welcome to the <bold>beta release</bold> of my Three.js project! <br> (Best viewed on PC. If on Mobile, you may have to reload a bit..)</small><br><br>
-             Directions: <br><br> Hover over static elements to play with the comet!<br><br>Click on the static elements to view content<br><br><br> Currently learning Blender to make my own custom graphics, so if there are any bugs on PC or Mobile please let me know (also if you have any general user feedback for me that would be great!)
+            This is a fun little Three.js animation project for the home screen.
+            <br>
+            <br>
+            <span class="font-bold text-xl block mb-2">Welcome to the beta release of my Three.js project!</span>
+            <br>
+            <span class="text-lg">(Best viewed on PC. If on Mobile, you may have to reload a bit.)</span>
+            <br>
+            <br>
+            <span class="font-bold text-xl block mb-2">Directions:</span>
+            <br>
+            <span class="text-lg">Hover over static elements to play with the comet!</span>
+            <br>
+            <span class="text-lg">Click on the static elements to view content.</span>
+            <br>
+            <br>
+            <br>
+            <span class="text-lg">I'm currently learning Blender to make my own custom graphics, so if there are any bugs on PC or Mobile please let me know (also if you have any general user feedback on how to improve the site. This is meant to be a fun project that can be shown to hiring managers and recruiters alike to prove my willingness to learn).</span>
         </p>
-        <button id="close-popup" style="position: absolute; top: 0.5rem; right: 1rem; font-size: 1.5rem; font-weight: bold; color: rgba(209, 213, 219, 1); cursor: pointer;">&times;</button>
+        <button id="close-popup" class="absolute top-2 right-4 text-3xl font-bold text-gray-400 hover:text-white cursor-pointer">&times;</button>
     </div>
+    
     <!-- Full-screen modal overlay -->
     <div id="overlay"
         class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-500 z-50">
