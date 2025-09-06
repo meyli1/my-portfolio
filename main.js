@@ -215,7 +215,7 @@ import * as THREE from 'three';
             },
             'Bell': {
                 desc: 'As a participant in the Bell Engineering Bootcamp, I collaborated on a team to develop a critical safety feature for a drone. We created a system that used the MQTT protocol to notify the pilot when the drones pitch and roll exceeded a set threshold. This communication between the drones Vehicle Management and peripheral control computers triggered the drones LED halo to change colors, providing the pilot with a real-time visual warning about its orientation.',
-                img: 'my-portfolio/images/bellbootcamp.png'
+                img: '/my-portfolio/images/bellbootcamp.png'
             }
         };
 
