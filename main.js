@@ -183,7 +183,7 @@ import * as THREE from 'three';
         const achievements = {
             'HACKUTD': {
                 desc: 'Eco Fast Track is an innovative IoT tool designed to promote water conservation. It utilizes sensors to monitor water usage and employs AI to analyze data, offering personalized, real-time insights and recommendations for both property managers and tenants. By aggregating usage data and comparing it to global benchmarks, the platform encourages sustainability and accountability through a user-friendly interface.',
-                img: '/images/hackutd.png'
+                img: '/my-portfolio/images/hackutd.png'
             },
             'Sam and Ellen Chang Scholarship': {
                 desc: 'Recipient of the Sam and Ellen Chang Scholarship (2024), a merit-based award recognizing academic achievement.'
@@ -196,26 +196,26 @@ import * as THREE from 'three';
             },
             'Management Leadership for Tomorrow Fellow': {
                 desc: 'Selected as a Management Leadership for Tomorrow (MLT) Fellow, participating in two major conferences, including the MLT Tech Trek in San Francisco. This experience provided valuable opportunities to network with other fellows and attend workshops focused on career development and leadership.',
-                img: '/images/MLT.png'
+                img: '/my-portfolio/images/MLT.png'
             },
             'AWS Practitioners': {
                 desc: 'Actively pursuing the AWS Certified Cloud Practitioner certification to demonstrate a foundational understanding of cloud computing and AWS services..'
             },
             'UTD Makeathon 2023': {
                 desc: 'Developed a portable water filtration system on a team of five during a 2-day makeathon with a $100 budget. Engineered and built a custom impeller pump to serve as the core of the system.',
-                img: '/images/makeathon.jpg'
+                img: '/my-portfolio/images/makeathon.jpg'
             },
             'FIRST Alumni/Volunteer': {
                 desc: 'Actively involved in FIRST Robotics for over four years, participating in both FTC and FRC as a student. I continue to contribute to the FIRST community by mentoring my high schools robotics team and volunteering at various FRC, FTC, and FLL competitions. This has allowed me to help foster a passion for STEM in the next generation while developing my leadership and teamwork skills.',
-                img: '/images/robomentor.png'
+                img: '/my-portfolio/images/robomentor.png'
             },
             'Griptape Challenger': {
                 desc: ' as a Griptape Alumni, I completed a complex personal project by constructing a fully functional split mechanical keyboard. My responsibilities encompassed all aspects of the build: I designed the case using CAD, 3D printed the components, soldered all electronics, and programmed the firmware for the pro micro. I successfully produced three working units from my initial design.',
-                img: '/images/keeb.png'
+                img: '/my-portfolio/images/keeb.png'
             },
             'Bell': {
                 desc: 'As a participant in the Bell Engineering Bootcamp, I collaborated on a team to develop a critical safety feature for a drone. We created a system that used the MQTT protocol to notify the pilot when the drones pitch and roll exceeded a set threshold. This communication between the drones Vehicle Management and peripheral control computers triggered the drones LED halo to change colors, providing the pilot with a real-time visual warning about its orientation.',
-                img: '/images/bellbootcamp.png'
+                img: 'my-portfolio/images/bellbootcamp.png'
             }
         };
 
