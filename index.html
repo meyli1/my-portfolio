@@ -35,19 +35,20 @@
             }
         </script>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-gray-900 text-white font-sans overflow-hidden">
     <canvas id="demo"></canvas>
     <!-- Work-in-progress pop-up -->
-    <div id="wip-popup" class="w-11/12 max-w-lg p-6 md:p-8 rounded-xl shadow-2xl overflow-y-auto max-h-[90vh]" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(30, 41, 59, 0.95); color: white; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.5s ease-in-out;">
+    <div id="wip-popup" class="w-11/12 max-w-lg p-6 md:p-8 rounded-xl shadow-2xl overflow-y-auto max-h-[90vh]"
+        style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(30, 41, 59, 0.95); color: white; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.5s ease-in-out;">
         <p class="text-center">
             <span class="font-extrabold text-xl block mb-2">Welcome to the beta release of my Three.js project!</span>
             <span class="text-lg">(Best viewed on PC.)</span>
-            
+
             <br>
             <br>
             <br>
@@ -63,11 +64,13 @@
             <br>
             <br>
             <br>
-            <span class="text-lg">If there are any bugs on PC or Mobile please let me know. This projects main purpose is for learning threejs animations and to pickup <bold>Blender</bold> to make 3D graphics.</span>
+            <span class="text-lg">If there are any bugs on PC or Mobile please let me know. This projects main purpose
+                is for learning threejs animations and to pickup <bold>Blender</bold> to make 3D graphics.</span>
         </p>
-        <button id="close-popup" class="absolute top-2 right-4 text-3xl font-bold text-gray-400 hover:text-white cursor-pointer">&times;</button>
+        <button id="close-popup"
+            class="absolute top-2 right-4 text-3xl font-bold text-gray-400 hover:text-white cursor-pointer">&times;</button>
     </div>
-    
+
     <!-- Full-screen modal overlay -->
     <div id="overlay"
         class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-500 z-50">
@@ -111,8 +114,8 @@
                 class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
                 <!-- Text container on the left -->
                 <div class="w-full md:w-full text-left md:pr-4">
-                    <div class="h-auto w-1/6 mb-2"><img src="/my-portfolio/icons/TOYO.svg" class=" object-cover w-full h-auto"
-                            alt="toyota icon"></div>
+                    <div class="h-auto w-1/6 mb-2"><img src="/my-portfolio/icons/TOYO.svg"
+                            class=" object-cover w-full h-auto" alt="toyota icon"></div>
                     <h2 class="text-3xl font-bold mb-1">Toyota</h2>
                     <p class="text-lg text-gray-400">OneTech Co-op</p>
                     <p class="text-lg text-gray-400">May 2025 - August 2025</p>
@@ -151,8 +154,8 @@
 
                 <!-- Text container on the left -->
                 <div class="w-full md:w-full text-left md:pr-4">
-                    <div class="h-10 w-10 mb-2"><img src="/my-portfolio/icons/bell_icon.png" class=" object-cover w-full h-auto"
-                            alt="bell icon"></div>
+                    <div class="h-10 w-10 mb-2"><img src="/my-portfolio/icons/bell_icon.png"
+                            class=" object-cover w-full h-auto" alt="bell icon"></div>
                     <h2 class="text-3xl font-bold mb-1">Bell Flight</h2>
                     <p class="text-lg text-gray-400">Flight Controls Software Intern</p>
                     <p class="text-lg text-gray-400">June 2024 - August 2024</p>
@@ -192,19 +195,19 @@
                 </div>
                 <!-- Text container on the left -->
                 <div class="w-full md:w-2/3 text-left md:pr-4">
-                    <div class="h-auto w-11 mb-2"><img src="/my-portfolio/icons/utd.jpeg" class=" object-cover w-full h-auto"
-                        alt="utd icon"></div>
-                <h2 class="text-3xl font-bold mb-1">NSF REU @ UTD</h2>
-                <p class="text-lg text-gray-400">Undergraduate Researcher at UTD</p>
-                <p class="text-lg text-gray-400">January 2024 - August 2024</p>
-                <p class="text-lg text-gray-400 mb-4">Richardson,TX - Research</p>
-                <p class="text-lg text-gray-200 mb-4">
-                    Pioneered the development of an autonomous research platform by converting a child's ride-on toy
-                    car. Conducted comprehensive power and torque calculations to select and integrate critical
-                    components, including boost/buck converters and servo motors. Designed and fabricated a compact
-                    electronics tower, rewired the system for seamless power integration, and architected the ROS
-                    node communication framework to enable future autonomous navigation based on sensor data.
-                </p>
+                    <div class="h-auto w-11 mb-2"><img src="/my-portfolio/icons/utd.jpeg"
+                            class=" object-cover w-full h-auto" alt="utd icon"></div>
+                    <h2 class="text-3xl font-bold mb-1">NSF REU @ UTD</h2>
+                    <p class="text-lg text-gray-400">Undergraduate Researcher at UTD</p>
+                    <p class="text-lg text-gray-400">January 2024 - August 2024</p>
+                    <p class="text-lg text-gray-400 mb-4">Richardson,TX - Research</p>
+                    <p class="text-lg text-gray-200 mb-4">
+                        Pioneered the development of an autonomous research platform by converting a child's ride-on toy
+                        car. Conducted comprehensive power and torque calculations to select and integrate critical
+                        components, including boost/buck converters and servo motors. Designed and fabricated a compact
+                        electronics tower, rewired the system for seamless power integration, and architected the ROS
+                        node communication framework to enable future autonomous navigation based on sensor data.
+                    </p>
                     <div class="flex flex-wrap space-x-2">
                         <span
                             class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Boost/Buck
@@ -228,23 +231,24 @@
                 class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
                 <!-- Image container on the right, centered -->
                 <div class="w-full md:w-1/3 p-4 flex-shrink-0 flex justify-center items-center">
-                    <img src="/my-portfolio/images/bellflight.JPG" class="rounded-xl object-cover w-full h-auto" alt="Experience 2">
+                    <img src="/my-portfolio/images/bellflight.JPG" class="rounded-xl object-cover w-full h-auto"
+                        alt="Experience 2">
                 </div>
                 <!-- Text container on the left -->
                 <div class="w-full md:w-2/3 text-left md:pr-4">
-                    <div class="h-auto w-10 mb-2"><img src="/my-portfolio/icons/bell_icon.png" class=" object-cover w-full h-auto"
-                        alt="bell icon"></div>
-                <h2 class="text-3xl font-bold mb-1">Bell Flight</h2>
-                <p class="text-lg text-gray-400">Flight Controls Software Intern</p>
-                <p class="text-lg text-gray-400">May 2023 - August 2023</p>
-                <p class="text-lg text-gray-400 mb-4">Fortworth,TX - Internship</p>
-                <p class="text-lg text-gray-200 mb-4">
-                    Developed a custom model checking solution for Simulink to ensure code integrity and
-                    standardization before conversion to C code. This was accomplished by creating a Python script
-                    with a Tkinter GUI to automate model verification, incorporating watchdog, MATLAB Engine,
-                    BeautifulSoup, and subprocess APIs. This proof-of-concept project enabled real-time quality
-                    checks and standardized model creation.
-                </p>
+                    <div class="h-auto w-10 mb-2"><img src="/my-portfolio/icons/bell_icon.png"
+                            class=" object-cover w-full h-auto" alt="bell icon"></div>
+                    <h2 class="text-3xl font-bold mb-1">Bell Flight</h2>
+                    <p class="text-lg text-gray-400">Flight Controls Software Intern</p>
+                    <p class="text-lg text-gray-400">May 2023 - August 2023</p>
+                    <p class="text-lg text-gray-400 mb-4">Fortworth,TX - Internship</p>
+                    <p class="text-lg text-gray-200 mb-4">
+                        Developed a custom model checking solution for Simulink to ensure code integrity and
+                        standardization before conversion to C code. This was accomplished by creating a Python script
+                        with a Tkinter GUI to automate model verification, incorporating watchdog, MATLAB Engine,
+                        BeautifulSoup, and subprocess APIs. This proof-of-concept project enabled real-time quality
+                        checks and standardized model creation.
+                    </p>
                     <div class="flex flex-wrap space-x-2">
                         <span
                             class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Python</span>
@@ -263,29 +267,31 @@
                 class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
                 <!-- Text container on the left -->
                 <div class="w-full md:w-full text-left md:pr-4">
-                    <div class="h-auto w-10 mb-2"><img src="/my-portfolio/icons/hermtac_icon.jpeg" class=" object-cover w-full h-auto"
-                        alt="hermtac icon"></div>
-                <h2 class="text-3xl font-bold mb-1">Hermtac</h2>
-                <p class="text-lg text-gray-400">Hardware Engineering Intern</p>
-                <p class="text-lg text-gray-400">May 2022 - June 2022</p>
-                <p class="text-lg text-gray-400 mb-4">Richardson,TX - Internship</p>
-                <p class="text-lg text-gray-200 mb-4">
-                    Efficiently completed the assembly and testing of 37 portable modems, finishing ahead of schedule.
-                    Executed detailed soldering of external LED indicator lights and performed final assembly of GPS
-                    antennas and internal components. The most complex part was creating a comprehensive wiring diagram
-                    for product documentation, which integrated a 4-ignition latching switch and battery bank.
-                </p>
+                    <div class="h-auto w-10 mb-2"><img src="/my-portfolio/icons/hermtac_icon.jpeg"
+                            class=" object-cover w-full h-auto" alt="hermtac icon"></div>
+                    <h2 class="text-3xl font-bold mb-1">Hermtac</h2>
+                    <p class="text-lg text-gray-400">Hardware Engineering Intern</p>
+                    <p class="text-lg text-gray-400">May 2022 - June 2022</p>
+                    <p class="text-lg text-gray-400 mb-4">Richardson,TX - Internship</p>
+                    <p class="text-lg text-gray-200 mb-4">
+                        Efficiently completed the assembly and testing of 37 portable modems, finishing ahead of
+                        schedule.
+                        Executed detailed soldering of external LED indicator lights and performed final assembly of GPS
+                        antennas and internal components. The most complex part was creating a comprehensive wiring
+                        diagram
+                        for product documentation, which integrated a 4-ignition latching switch and battery bank.
+                    </p>
                     <div class="flex flex-wrap space-x-2">
                         <span
-                        class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Soldering</span>
-                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Wire
-                        Management</span>
-                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Machine
-                        Shop Safety</span>
-                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Circuit
-                        Design</span>
-                    <span
-                        class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Start-up</span>
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Soldering</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Wire
+                            Management</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Machine
+                            Shop Safety</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Circuit
+                            Design</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Start-up</span>
                     </div>
                 </div>
             </div>
@@ -293,30 +299,34 @@
             <!-- Fourth Experience Card with image on the right -->
             <div
                 class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
-        
+
                 <!-- Text container on the left -->
                 <div class="w-full md:w-full text-left md:pr-4">
                     <div class="h-auto w-10 mb-2"><img src="/my-portfolio/icons/thomson_reuters_icon.jpeg"
-                        class=" object-cover w-full h-auto" alt="TR icon"></div>
+                            class=" object-cover w-full h-auto" alt="TR icon"></div>
                     <h2 class="text-3xl font-bold mb-1">Thomson Reuters</h2>
                     <p class="text-lg text-gray-400">Digital Marketing Strategist Intern</p>
                     <p class="text-lg text-gray-400">June 2021 - August 2021</p>
                     <p class="text-lg text-gray-400 mb-4">Remote - Internship</p>
                     <p class="text-lg text-gray-200 mb-4">
-                        Modified data, tasks, and due dates for over 100 clients using Wrike. Gained expertise in 20+ SEO
-                    best practices, applying them to client websites, including Back-links, Google Ads, and utilizing
-                    tools like MOZ, Screaming Frog, and WordPress to improve customer interactions. Presented a new
-                    product idea in just three weeks, including a full presentation and product layout, to a group of
-                    20+ people from the product and marketing teams.
+                        Modified data, tasks, and due dates for over 100 clients using Wrike. Gained expertise in 20+
+                        SEO
+                        best practices, applying them to client websites, including Back-links, Google Ads, and
+                        utilizing
+                        tools like MOZ, Screaming Frog, and WordPress to improve customer interactions. Presented a new
+                        product idea in just three weeks, including a full presentation and product layout, to a group
+                        of
+                        20+ people from the product and marketing teams.
                     </p>
                     <div class="flex flex-wrap space-x-2">
                         <span
-                        class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Wrike</span>
-                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">SEO</span>
-                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Google
-                        Analytics</span>
-                    <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Digital
-                        Marketing</span>
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Wrike</span>
+                        <span
+                            class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">SEO</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Google
+                            Analytics</span>
+                        <span class="bg-gray-800 text-gray-400 text-sm font-semibold px-2.5 py-0.5 rounded-full">Digital
+                            Marketing</span>
                     </div>
                 </div>
             </div>
@@ -383,7 +393,8 @@
                 class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
                 <!-- Image container on the right, centered -->
                 <div class="w-full md:w-1/3 p-4 flex-shrink-0 flex justify-center items-center">
-                    <img src="/my-portfolio/images/SD_EE_Box.png" class="rounded-xl object-cover w-full h-auto" alt="Experience 2">
+                    <img src="/my-portfolio/images/SD_EE_Box.png" class="rounded-xl object-cover w-full h-auto"
+                        alt="Experience 2">
                 </div>
                 <!-- Text container on the left -->
                 <div class="w-full md:w-2/3 text-left md:pr-4">
@@ -434,7 +445,8 @@
                 class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
                 <!-- Image container on the right, centered -->
                 <div class="w-full md:w-1/3 p-4 flex-shrink-0 flex justify-center items-center">
-                    <img src="/my-portfolio/images/biotech.jpg" class="rounded-xl object-cover w-full h-auto" alt="Experience 3">
+                    <img src="/my-portfolio/images/biotech.jpg" class="rounded-xl object-cover w-full h-auto"
+                        alt="Experience 3">
                 </div>
                 <!-- Text container on the left -->
                 <div class="w-full md:w-2/3 text-left md:pr-4">
@@ -479,7 +491,8 @@
                 class="bg-gray-700 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row-reverse items-start p-6 border-2 border-gray-500">
                 <!-- Image container on the right, centered -->
                 <div class="w-full md:w-1/3 p-4 flex-shrink-0 flex justify-center items-center">
-                    <img src="/my-portfolio/images/nova_leds.jpg" class="rounded-xl object-cover w-full h-auto" alt="Experience 3">
+                    <img src="/my-portfolio/images/nova_leds.jpg" class="rounded-xl object-cover w-full h-auto"
+                        alt="Experience 3">
                 </div>
                 <!-- Text container on the left -->
                 <div class="w-full md:w-2/3 text-left md:pr-4">
@@ -544,11 +557,15 @@
                     <p class="text-lg text-gray-400">Team Lead</p>
                     <p class="text-lg text-gray-400 mb-4">2022 Spring</p>
                     <p class="text-lg text-gray-200 mb-4">
-                        - Led a team of six to reconfigure a hoverboard into a remote-controlled prototype. This involved overriding the original control system and programming an Arduino speed controller to translate joystick input into motor commands.
+                        - Led a team of six to reconfigure a hoverboard into a remote-controlled prototype. This
+                        involved overriding the original control system and programming an Arduino speed controller to
+                        translate joystick input into motor commands.
                         <br>
-                        - Created detailed wiring diagrams and a bill of materials to document all electronic components, ensuring a clear record of the project's technical specifications.
+                        - Created detailed wiring diagrams and a bill of materials to document all electronic
+                        components, ensuring a clear record of the project's technical specifications.
                         <br>
-                        - Provided hands-on instruction and supervision in soldering techniques, enabling team members to safely and effectively complete the necessary electrical connections.
+                        - Provided hands-on instruction and supervision in soldering techniques, enabling team members
+                        to safely and effectively complete the necessary electrical connections.
                     </p>
                     <div class="flex flex-wrap space-x-2">
                         <span
@@ -573,28 +590,40 @@
         <div class="w-full">
             <div class="p-6 text-center">
                 <h1 class="text-5xl font-extrabold mb-4 text-center">Involvement</h1>
-                <small>This will not work on mobile!! <br>Hover over the words to get a small snapshot of my involvement throughout the years</small>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-items-center relative w-full max-w-[800px] mx-auto">
+                <small>This will not work on mobile!! <br>Hover over the words to get a small snapshot of my involvement
+                    throughout the years</small>
+                <div
+                    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-items-center relative w-full max-w-[800px] mx-auto">
                     <span data-word="HACKUTD"
-                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-4xl mt-6 md:mt-12">HACKUTD 2024</span>
+                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-4xl mt-6 md:mt-12">HACKUTD
+                        2024</span>
                     <span data-word="Sam and Ellen Chang Scholarship"
-                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-3xl ml-4 md:ml-8">Sam and Ellen Chang Scholarship</span>
+                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-3xl ml-4 md:ml-8">Sam
+                        and Ellen Chang Scholarship</span>
                     <span data-word="Grace Hopper Celebration Attendee"
-                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-3xl mb-4 md:mb-8">Grace Hopper Celebration Attendee</span>
+                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-3xl mb-4 md:mb-8">Grace
+                        Hopper Celebration Attendee</span>
                     <span data-word="NSF sponsored Reaserach Experience for Undergraduates"
-                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-2xl mt-8 md:mt-16">NSF sponsored Reaserach Experience for Undergraduates</span>
+                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-2xl mt-8 md:mt-16">NSF
+                        sponsored Reaserach Experience for Undergraduates</span>
                     <span data-word="Management Leadership for Tomorrow Fellow"
-                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-xl mb-2 md:mb-4">Management Leadership for Tomorrow Fellow</span>
+                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-xl mb-2 md:mb-4">Management
+                        Leadership for Tomorrow Fellow</span>
                     <span data-word="AWS Practitioners"
-                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-2xl mr-4 md:mr-8">AWS Practitioners</span>
+                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-2xl mr-4 md:mr-8">AWS
+                        Practitioners</span>
                     <span data-word="UTD Makeathon 2023"
-                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-3xl mt-4 md:mt-10">UTD Makeathon 2023</span>
+                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-3xl mt-4 md:mt-10">UTD
+                        Makeathon 2023</span>
                     <span data-word="FIRST Alumni/Volunteer"
-                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-2xl -mt-2 md:-mt-4">FIRST Alumni/Volunteer</span>
+                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-2xl -mt-2 md:-mt-4">FIRST
+                        Alumni/Volunteer</span>
                     <span data-word="Griptape Challenger"
-                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-xl ml-2 md:ml-4">Griptape Challenger</span>
+                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-xl ml-2 md:ml-4">Griptape
+                        Challenger</span>
                     <span data-word="Bell"
-                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-2xl -mr-4 md:-mr-8">Bell Engineering BootCamper</span>
+                        class="cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-[#4CAF50] text-2xl -mr-4 md:-mr-8">Bell
+                        Engineering BootCamper</span>
                 </div>
                 <div id="tooltip"
                     class="flex flex-row bg-gray-800/95 p-1 rounded-xl shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 max-w-full text-center z-10 items-center">
@@ -606,7 +635,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <div id="section-4" class="hidden">
         <div class="flex justify-center">
